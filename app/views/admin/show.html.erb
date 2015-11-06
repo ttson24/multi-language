@@ -1,0 +1,69 @@
+<% provide(:home, "active")%>
+<% provide(:title, "Home")%> 
+<div class="jumbotron header-action">  
+    
+</div>
+<div class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= bootstrap_class_for(type) %> alert-dismissable fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= message %>
+        </div>
+      <% end %>
+  	<div class="row">
+	    <div class="col-md-12">
+	    
+	      	<div class="media">
+		        <div class="media-left">
+		          <a href="javascript:void(0)">
+		              <img class="media-object" src="<%= @blog.gravatar %>"></img>
+		          </a>
+		        </div>
+		        <div class="madia-body">
+		          <h4 class="media-heading"><%= @blog.email %> Asked:</h4>
+		          <div>
+		            <span><%= time_ago_in_words @blog.created_at%> ago</span>
+		          </div>
+		          <div>
+		            <label><%= @blog.body %></label>
+		          </div>  
+		        </div>        
+	        </div>
+        </div> 
+	       <button type="button" class="btn btn-info btn-answer" data-toggle="modal" data-target="#answerModal">Answer</button>  
+    </div> 
+    
+    <div class="row content-answer">
+
+	    <div class="col-md-1"></div>
+    	<div class="col-md-11"> 
+		    <% @answer.each do |ans|%>
+		    	<div class="media">
+			        <div class="media-left">
+			          <a href="javascript:void(0)">
+			              <img class="media-object" src="<%= ans.gravatar %>"></img>
+			          </a>
+			        </div>
+			        <div class="madia-body">
+			          <h4 class="media-heading"><%= ans.email %> Answer:</h4>
+			          <div>
+			            <span><%= time_ago_in_words ans.created_at%> ago</span>
+			          </div>
+			          <div>
+			            <label><%= ans.body %></label>
+			          </div>          
+			        </div>
+			      </div> 
+			    <% end %>
+			    <% if @answer.empty?%>
+		            <div class="alert alert-info"> Nothing here yet, be the first to answer</div>
+		          <% end%>   
+		      </div>		    
+	    </div>	 
+  	</div>
+  <%= render 'new_answer_form'%>
+      <hr>
+      <footer class="screen-center">
+        <p >&copy; Company 2014</p>
+      </footer>
+</div> <!-- /container -->

@@ -1,0 +1,50 @@
+<% provide(:home, "active")%>
+<% provide(:title, "Home")%>
+ <!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron header-action">   
+    <button type="button" class="btn btn-primary pull-right" data-toggle="modal" data-target="#gridSystemModal"><%= t('home.question') %></button>  
+</div><%=I18n.locale %>
+<div class="container">
+      <% flash.each do |type, message| %>
+        <div class="alert alert-<%= bootstrap_class_for(type) %> alert-dismissable fade in">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+          <%= message %>
+        </div>
+      <% end %>
+      <div class="row">
+        <div class="col-md-12">
+        <% @blog.each do |b|%>
+          <div class="media">
+            <div class="media-left">
+              <a href="javascript:void(0)">
+                  <img class="media-object" src="<%= b.gravatar %>"></img>
+              </a>
+            </div>
+            <div class="madia-body">
+              <h4 class="media-heading"><%= b.email %> Asked:</h4>
+              <div>
+                <span><%= time_ago_in_words b.created_at%> ago</span>
+              </div>
+              <div>
+                <label><%= b.body %></label>
+              </div>     
+              <div>
+                <a href="<%= admin_path(b) %>" class="btn btn-success">View detail</a> 
+              </div>         
+            </div>
+          </div>
+          <% end %>
+          <% if @blog.empty?%>
+            <div class="alert alert-info"> Nothing here yet, be the first to ask</div>
+          <% end%>         
+        </div>
+      </div>
+    </div>
+
+    <%= render 'new_blog_form'%>
+      <hr>
+
+      <footer class="screen-center">
+        <p>&copy; Company 2014</p>
+      </footer>
+</div> <!-- /container -->

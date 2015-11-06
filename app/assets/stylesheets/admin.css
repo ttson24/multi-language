@@ -1,0 +1,28 @@
+/* line 2, ../components/sass/admin.scss */
+.header-action {
+  margin: 0px;
+  padding: 2% 1s0px 4% 0px; }
+
+/* line 7, ../components/sass/admin.scss */
+.container {
+  padding-top: 1%; }
+
+/* line 10, ../components/sass/admin.scss */
+.media-left {
+  width: 8%;
+  float: left; }
+
+/* line 14, ../components/sass/admin.scss */
+.row {
+  padding-bottom: 1%; }
+
+/* line 17, ../components/sass/admin.scss */
+.modal-header {
+  background-color: #286090;
+  color: #ffffff;
+  text-transform: uppercase; }
+
+/* line 22, ../components/sass/admin.scss */
+.screen-center {
+  margin: 0px auto;
+  text-align: center; }

@@ -1,0 +1,19 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <div class="language">
+        <button type="button" class="btn btn-info">Tieng viet</button>
+        <button type="button" class="btn btn-info">Tieng anh</button>
+        <button type="button" class="btn btn-info">Tieng nhat</button> 
+      </div>
+      <a class="navbar-brand" href="javascript:void(0)">This is basic page</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="<%= yield(:home)%>"><%= link_to "Home", root_path%></li>
+        <li class="<%= yield(:about)%>"><%= link_to "About", about_path%></li>        
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div>
+</div><!-- /.container-fluid -->
+</nav>

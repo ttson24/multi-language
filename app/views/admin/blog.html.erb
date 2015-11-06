@@ -1,0 +1,68 @@
+<% provide(:blog, "active")%>
+<% provide(:title, "blog")%>
+  <div class="container navbar navbar-default" style="width:100%; padding-top:0px; padding-bottom:10px;">
+    <div class="blog-header">
+      <h1 class="blog-title">The Bootstrap Blog</h1>
+      <p class="lead blog-description">The official example template of creating a blog with Bootstrap.</p>
+      
+      <button class="btn btn-success btn-lg pull-right" data-toggle="modal" data-target="#gridSystemModal"> Ask</button> 
+    </div>
+  </div>
+  
+  <div id="gridSystemModal" class="modal fade"  role="dialog" data-backdrop="false" aria-labelledby="gridSystemModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="gridSystemModalLabel">New a question</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+               <form role="form" class="form-horizontal" action="/questions" method="post"> 
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                      <input type="email" id="email" name="email" class="form-control" placeHolder="Email" required/>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Question</label>
+                    <div class="col-sm-10">
+                      <textarea class="form-control" rows="5" id="body" name="body" placeHolder="Question" required></textarea> 
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Post</button>
+                  </div>
+                </form>
+            </div>
+          </div>
+          
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+   </div>
+<div class="container">
+  <div class="row">
+
+    <div class="col-sm-8 blog-main">
+      <% @blog.each do |row|%>
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img src="<%= row.gravatar%>" alt="" class="media-object">
+            </a>
+          </div><!--  media left -->
+          <div class="media-body"> 
+             <h4 class="media-heading"> <%=row.email%> asked:</h4>
+             <div><%=time_ago_in_words row.created_at%>ago</div>
+             <%= row.body%>
+          </div>
+        </div>  
+        <% end %>
+        
+    </div>
+  </div><!-- /.row -->
+  </div><!-- /.container -->
